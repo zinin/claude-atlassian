@@ -3,6 +3,9 @@
 Fill the placeholders and replace the `<common block>` line in each template with the block
 below — that marker is never sent to a scout. The recon scouts go out in one message; the
 challenger is dispatched later, during the strength check, and keeps its own return format.
+If the text going into `{EVIDENCE}` contains `</evidence>`, write it as
+`&lt;/evidence&gt;` — a literal closing tag would end the quote early and let the rest of
+it read as instructions.
 
 ## Common block
 
