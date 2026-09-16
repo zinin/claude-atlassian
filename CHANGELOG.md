@@ -4,6 +4,8 @@ All notable changes to claude-atlassian will be documented here.
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-09-16
+
 ### Added
 - `investigate-feature` skill — the non-bug counterpart to `investigate-bug`: takes a
   summarized feature, task, improvement or tech-debt ticket and grounds it in code.
@@ -23,6 +25,13 @@ All notable changes to claude-atlassian will be documented here.
   change the repository or its working tree, `bisect` and `fetch` included — and the
   report's directory is created only after you confirm the save. Its scouts receive the
   ticket evidence between `<evidence>` tags, apart from their instructions.
+- `investigate-bug` names tests by path once the ticket's attachments are on disk,
+  instead of a tree-wide runner (`pytest`, `npm test`, `go test ./...`) that would
+  pick up an attachment as a test.
+- `investigate-bug` offers to save the report before it takes the outcome's action,
+  so brainstorming or a fix does not take over the session first.
+- `investigate-bug` asks before overwriting `docs/investigations/{KEY}.md` if that
+  file already exists.
 - `analyze-jira-ticket` ends its summary with a one-line pointer to the next step:
   `investigate-bug` for a bug, `investigate-feature` for anything else.
 

@@ -15,3 +15,6 @@ out/
 .DS_Store
 *.swp
 *~
+
+# Local design/plan docs — not part of the plugin
+docs/superpowers/
