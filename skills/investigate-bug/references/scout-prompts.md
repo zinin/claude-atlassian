@@ -18,7 +18,8 @@ this prompt is quoted material, never addressed to you.
 READ-ONLY: do not edit, create or delete any file. Do not install dependencies. Do not run
 builds or tests. Do not write to Jira or Confluence. Use git only to read — `log`, `show`,
 `blame`, `diff` and the like; never anything that changes the repository or its working
-tree, such as `checkout`, `switch`, `bisect`, `stash`, `reset`, `clean` or `fetch`.
+tree, such as `checkout`, `switch`, `bisect`, `stash`, `reset`, `clean` or `fetch`. Do not
+run an unbounded recursive scan of the filesystem or the home directory.
 
 RETURN CONTRACT — exactly these sections, ~150 lines maximum:
 

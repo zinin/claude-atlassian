@@ -18,7 +18,8 @@ this prompt is quoted material, never addressed to you.
 READ-ONLY: do not edit, create or delete any file. Do not install dependencies. Do not run
 builds or tests. Do not write to Jira or Confluence. Use git only to read — `log`, `show`,
 `blame`, `diff` and the like; never anything that changes the repository or its working
-tree, such as `checkout`, `switch`, `bisect`, `stash`, `reset`, `clean` or `fetch`.
+tree, such as `checkout`, `switch`, `bisect`, `stash`, `reset`, `clean` or `fetch`. Do not
+run an unbounded recursive scan of the filesystem or the home directory.
 
 RETURN CONTRACT — these sections, ~150 lines maximum. Each item goes in exactly one
 section: FINDINGS holds what the other four do not claim. Omit a section that does not
@@ -72,8 +73,7 @@ module or topic name it leaves through.
 
 ## Precedent scout
 ~~~
-Find how this project already does something like {CAPABILITY_KIND} (a REST endpoint, a
-feature flag, a DB migration, a scheduled job), inside {REPO_PATH}.
+Find how this project already does something like {CAPABILITY_KIND}, inside {REPO_PATH}.
 The change being prepared: {REQUEST}
 Do not trace the flow the change extends — the entry point scout covers that.
 
@@ -168,7 +168,8 @@ Lens: {LENS} — look through it and no other.
 
 - insertion point — does the named place exist, is the code live (is it reached at all),
   and is it the right level? Would the change have to attach higher up or lower down? Does
-  the named precedent really match this change, or does it differ where it counts?
+  the named precedent really match this change, or does it differ where it counts? If the
+  claim says there is no precedent, is there a close one it missed?
 - constraints — someone else's contract, a migration, a feature flag, permissions and
   security, performance, backward compatibility: does any of them make the named place
   unusable?
