@@ -38,10 +38,12 @@ Investigating is not fixing. For the whole run:
 - Never install dependencies (`npm install`, `mvn install`, `pip install`, ...). They
   change the working tree.
 - Never run tests or builds without asking first. Propose the command, wait for a yes.
-  Once the ticket's attachments are on disk, name the tests by path instead of proposing a
-  runner that discovers them across the tree — bare `pytest`, `npm test`, `go test ./...`:
-  an attachment named `conftest.py`, `*.test.js` or `*_test.go` would run as a test. Say
-  so when you ask.
+  When you ask, say that a typical runner writes caches (`__pycache__/`, `target/`,
+  `.pytest_cache/`) and those will show in `git status` — a yes permits that dirt, not
+  source edits and not an install. Once the ticket's attachments are on disk, name the
+  tests by path instead of proposing a runner that discovers them across the tree — bare
+  `pytest`, `npm test`, `go test ./...`: an attachment named `conftest.py`, `*.test.js`
+  or `*_test.go` would run as a test. Say so when you ask.
 - Never write anything back to Jira or Confluence.
 - Never read Jira yourself — the summary is your input, and searching belongs to the
   Atlassian scout. The one thing you fetch from Jira is the ticket's attachments, in
@@ -52,7 +54,9 @@ Investigating is not fixing. For the whole run:
 - The only files you may ever create are the ticket's attachments, written to
   `docs/jira-attachments/<KEY>/` by the helper script below, and the report — and the
   report only after the user confirms it. Both appear in `git status`: say so when you
-  report the downloads, as you do when you offer to save the report.
+  report the downloads, as you do when you offer to save the report. Runner caches from
+  a test or build the user already approved are the one other exception: do not commit
+  them, and do not delete them unasked.
 
 Urgency does not lift this. A production outage is a reason to report faster, not a
 reason to start editing someone else's repository.
@@ -71,7 +75,8 @@ Excuses agents actually reached for, and what each one is worth:
 ## Red Flags — STOP
 
 - I am about to edit a file to "check" a hypothesis.
-- I am about to run a dependency install or a build.
+- I am about to run a dependency install.
+- I am about to run a test or a build without a yes.
 - I am about to save the report without asking.
 - I am naming a cause without quoting a single line of code.
 - I am skipping falsification because I am fairly sure already.

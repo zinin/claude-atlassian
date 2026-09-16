@@ -4,6 +4,13 @@ All notable changes to claude-atlassian will be documented here.
 
 ## [Unreleased]
 
+## [0.5.1] - 2026-09-16
+
+### Fixed
+- `investigate-feature` and `investigate-bug` no longer treat an approved test or build
+  as a STOP: a dependency install is still forbidden; a test or build is forbidden only
+  until you say yes, and the ask warns that runner caches will appear in `git status`.
+
 ## [0.5.0] - 2026-09-16
 
 ### Added
