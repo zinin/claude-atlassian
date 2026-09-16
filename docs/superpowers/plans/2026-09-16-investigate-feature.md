@@ -102,3 +102,11 @@ cd /opt/github/zinin/claude-atlassian && git rm -r --cached docs/superpowers && 
 ```
 
 Документы остаются доступны в истории ветки: `git show HEAD~1:docs/superpowers/plans/2026-09-16-investigate-feature.md`.
+
+---
+
+### Task 7: Read-only правила обоих скиллов в одну линию
+
+Добавлена пользователем после финального ревью: отложенное в отдельный PR сделано в этой ветке, плюс остатки точечного ревью `a45f691`.
+
+✅ Done — see commit(s): `32bbe78`, `a4ed72d`
