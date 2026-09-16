@@ -50,7 +50,7 @@ for part in ("SECURITY:", "READ-ONLY:", "RETURN CONTRACT"):
 for sec in ("FINDINGS", "EXISTS ALREADY", "PATTERN", "CONSTRAINTS", "NOT FOUND"):
     assert sec in t, f"missing return contract section: {sec}"
 assert "VERDICT: refuted | survives" in t, "challenger verdict format missing"
-assert "{MODE}" in t, "MODE placeholder missing"
+assert t.count("{MODE}") == 2, "MODE must be set for both the Entry point and the Precedent scout"
 print("scout-prompts.md: ok")
 PY
 ```
@@ -130,6 +130,12 @@ module or topic name it leaves through.
 ~~~
 Find how this project already does something like {CAPABILITY_KIND}, inside {REPO_PATH}.
 The change being prepared: {REQUEST}
+
+Mode: {MODE}
+- targeted — find the closest precedent for the change as it is described.
+- survey — the request is too thin to match a precedent to yet. Do not guess the intent.
+  Map instead which kinds of comparable machinery exist here at all, so that the choice
+  between them can be made deliberately once the request is clear.
 
 Look for the closest thing already built here — a similar endpoint, a similar migration, a
 similar integration, a similar setting or feature flag. For each one report where it lives,
