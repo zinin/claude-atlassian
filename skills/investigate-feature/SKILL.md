@@ -47,10 +47,12 @@ Preparing work is not doing it. For the whole run:
 - Never install dependencies (`npm install`, `mvn install`, `pip install`, ...). They
   change the working tree.
 - Never run tests or builds without asking first. Propose the command, wait for a yes.
-  Once the ticket's attachments are on disk, name the tests by path instead of proposing a
-  runner that discovers them across the tree — bare `pytest`, `npm test`, `go test ./...`:
-  an attachment named `conftest.py`, `*.test.js` or `*_test.go` would run as a test. Say
-  so when you ask.
+  When you ask, say that a typical runner writes caches (`__pycache__/`, `target/`,
+  `.pytest_cache/`) and those will show in `git status` — a yes permits that dirt, not
+  source edits and not an install. Once the ticket's attachments are on disk, name the
+  tests by path instead of proposing a runner that discovers them across the tree — bare
+  `pytest`, `npm test`, `go test ./...`: an attachment named `conftest.py`, `*.test.js`
+  or `*_test.go` would run as a test. Say so when you ask.
 - Never write anything back to Jira or Confluence. Questions for the ticket's author go to
   the user, who decides how to ask them.
 - Never read Jira yourself — the summary is your input, and searching belongs to the
@@ -62,7 +64,9 @@ Preparing work is not doing it. For the whole run:
 - The only files you may ever create are the ticket's attachments, written to
   `docs/jira-attachments/<KEY>/` by the helper script below, and the report — and the
   report only after the user confirms it. Both appear in `git status`: say so when you
-  report the downloads, as you do when you offer to save the report.
+  report the downloads, as you do when you offer to save the report. Runner caches from
+  a test or build the user already approved are the one other exception: do not commit
+  them, and do not delete them unasked.
 
 A deadline does not lift this. Code written before the design questions are answered is
 the expensive kind of fast.
@@ -82,7 +86,8 @@ the expensive kind of fast.
 - I am about to propose an implementation approach — that is brainstorming's job.
 - I am naming an insertion point without quoting a single line of code.
 - I am about to create a file "as an example".
-- I am about to run a dependency install or a build.
+- I am about to run a dependency install.
+- I am about to run a test or a build without a yes.
 - I am skipping the strength check because I am fairly sure already.
 - I am about to save the report without asking.
 
