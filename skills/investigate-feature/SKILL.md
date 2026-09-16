@@ -182,12 +182,14 @@ Claims like "it attaches here", "it follows that precedent" and "this criterion 
 reachable" are checked the way a bug's causal hypothesis is: by trying to break them.
 
 Always send at least one challenger. Send two or three when neighbours are involved, when
-there is more than one open decision, or when confidence is not high. Dispatch them in one
-message, each with one lens and no other: **insertion point**, **constraints**,
-**acceptance criteria**. The single challenger takes the insertion point lens; the other
-two join it as the count grows. Whatever the count, the insertion point claim also names
-the precedent, or says there is none, so the lens tests that as well. The template is in
-the same references file.
+there is more than one open decision, or when confidence is not high. Send all three when
+synthesis leaves no open decisions, no questions for the author and no neighbours: the run
+is heading for the No open decisions outcome, the one that skips brainstorming, so nothing
+it rests on may go unchecked. Dispatch them in one message, each with one lens and no
+other: **insertion point**, **constraints**, **acceptance criteria**. The single
+challenger takes the insertion point lens; the other two join it as the count grows.
+Whatever the count, the insertion point claim also names the precedent, or says there is
+none, so the lens tests that as well. The template is in the same references file.
 
 - A claim counts as checked only if a lens actually went over it. An unchecked claim is
   reported as unchecked, not as fine.
@@ -263,7 +265,7 @@ two of them hold picks a different outcome every time.
 | Blocked | A blocker is fatal | Say what must clear before the work can start, and who owns it. Do not start brainstorming |
 | Decomposition needed | The work sits on three or more subsystems, or splits into independent pieces | Propose the split and take the first sub-task in its own run. Scale comes first: the author's questions get asked per piece anyway |
 | Requirements too thin | Not one key criterion can be derived from anything | Hand over the questions for the author and say what you are waiting for. Do not start brainstorming |
-| No open decisions | No open decisions and no questions for the author; one insertion point, a full precedent, no inferred criteria — every one sourced to the ticket, the discussion, a mockup, an attachment or the wiki — and no neighbours involved | Sketch the plan — the steps the single precedent dictates, not a choice of approach, since none is left to make — and offer the normal development workflow. Confirmation is still required. Any doubt at all — take the heavier path |
+| No open decisions | No open decisions and no questions for the author; one insertion point, a full precedent, no inferred criteria — every one sourced to the ticket, the discussion, a mockup, an attachment or the wiki — no neighbours involved, and all three lenses went over the brief with nothing refuted | Sketch the plan — the steps the single precedent dictates, not a choice of approach, since none is left to make — and offer the normal development workflow. Confirmation is still required. Any doubt at all — take the heavier path |
 | Ready to design | Everything else, low confidence included | Offer `superpowers:brainstorming`; on a yes, invoke it in this session. Say it plainly when confidence is low: the insertion point was not found, and that is design question number one |
 
 This skill's run ends when the user accepts an outcome. The read-only contract covers the
