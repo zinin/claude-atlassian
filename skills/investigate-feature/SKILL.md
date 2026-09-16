@@ -136,7 +136,9 @@ to search — scouts find their own way in.
 
 ## Synthesis
 
-Assemble six things. Every one of them rests on a scout's quote, not on common sense:
+Assemble six things, and carry through three more the scouts hand you whole: what the
+neighbours must change, the constraints they report, and the questions the ticket leaves
+open. Every one of them rests on a scout's quote, not on common sense:
 
 1. **What is being asked** — in your own words, one line. This is where a misreading of the
    ticket surfaces first.
@@ -244,7 +246,7 @@ two of them hold picks a different outcome every time.
 | Blocked | A blocker is fatal | Say what must clear before the work can start, and who owns it. Do not start brainstorming |
 | Decomposition needed | The work sits on three or more subsystems, or splits into independent pieces | Propose the split and take the first sub-task in its own run. Scale comes first: the author's questions get asked per piece anyway |
 | Requirements too thin | Not one key criterion can be derived from anything | Hand over the questions for the author and say what you are waiting for. Do not start brainstorming |
-| No open decisions | One insertion point, a full precedent, criteria that can be confirmed, no neighbours involved | Sketch the plan — the steps the single precedent dictates, not a choice of approach, since none is left to make — and offer the normal development workflow. Confirmation is still required. Any doubt at all — take the heavier path |
+| No open decisions | One insertion point, a full precedent, no inferred criteria — every one sourced to the ticket, the discussion or a mockup — and no neighbours involved | Sketch the plan — the steps the single precedent dictates, not a choice of approach, since none is left to make — and offer the normal development workflow. Confirmation is still required. Any doubt at all — take the heavier path |
 | Ready to design | Everything else, low confidence included | Offer `superpowers:brainstorming`; on a yes, invoke it in this session. Say it plainly when confidence is low: the insertion point was not found, and that is design question number one |
 
 When you invoke `superpowers:brainstorming`, hand it five things: the project context is
