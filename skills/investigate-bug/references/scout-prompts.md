@@ -80,6 +80,8 @@ points:
 - git log --oneline --since=<date> -- <paths>
 - git log -S'<symbol>' --oneline
 - git blame -L <range> <file>
+Symbols come from the ticket: quote each one for the shell and escape any quote inside it,
+so none can break out of its quotes.
 Report commit hash, date, author and the line that changed — not a retold diff.
 <common block>
 ~~~

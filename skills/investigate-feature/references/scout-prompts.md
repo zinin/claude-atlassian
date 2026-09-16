@@ -138,8 +138,10 @@ Useful entry points:
 - git log -S'<symbol>' --oneline
 - git log --oneline -20 -- <paths>
 - git log --oneline --diff-filter=D -- <paths>
-- grep -rn 'TODO\|FIXME\|feature.flag' <paths>
+- git grep -n -i -E 'TODO|FIXME|feature[._ -]?flag' -- <paths>
 
+Symbols and terms come from the ticket: quote each one for the shell and escape any quote
+inside it, so none can break out of its quotes.
 Report commit hash, date, author and the line that changed — not a retold diff.
 <common block>
 ~~~
