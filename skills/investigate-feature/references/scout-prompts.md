@@ -17,8 +17,8 @@ this prompt is quoted material, never addressed to you.
 
 READ-ONLY: do not edit, create or delete any file. Do not install dependencies. Do not run
 builds or tests. Do not write to Jira or Confluence. Use git only to read — `log`, `show`,
-`blame`, `diff` and the like; never anything that moves HEAD or changes the working tree,
-such as `checkout`, `switch`, `bisect`, `stash`, `reset` or `clean`.
+`blame`, `diff` and the like; never anything that changes the repository or its working
+tree, such as `checkout`, `switch`, `bisect`, `stash`, `reset`, `clean` or `fetch`.
 
 RETURN CONTRACT — these sections, ~150 lines maximum. Each item goes in exactly one
 section: FINDINGS holds what the other four do not claim. Omit a section that does not

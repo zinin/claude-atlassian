@@ -20,9 +20,9 @@ All notable changes to claude-atlassian will be documented here.
 - `investigate-bug` now offers `investigate-feature` for a non-bug ticket where it used to
   offer `superpowers:brainstorming`.
 - `investigate-bug` tightens its read-only contract: git is used only to read — never to
-  move HEAD or change the working tree, `bisect` included — and the report's directory is
-  created only after you confirm the save. Its scouts receive the ticket evidence between
-  `<evidence>` tags, apart from their instructions.
+  change the repository or its working tree, `bisect` and `fetch` included — and the
+  report's directory is created only after you confirm the save. Its scouts receive the
+  ticket evidence between `<evidence>` tags, apart from their instructions.
 
 ## [0.4.0] - 2026-08-26
 
