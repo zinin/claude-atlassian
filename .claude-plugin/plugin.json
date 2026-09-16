@@ -2,9 +2,9 @@
   "name": "claude-atlassian",
   "version": "0.4.0",
   "displayName": "Claude Atlassian",
-  "description": "Jira ticket analysis, Confluence page reading, and cross-repository bug investigation via context-protecting subagents",
+  "description": "Jira ticket analysis, Confluence page reading, and cross-repository investigation of bugs and of new work via context-protecting subagents",
   "author": { "name": "Alexander V. Zinin", "email": "azinin@gmail.com", "url": "https://github.com/zinin" },
   "repository": "https://github.com/zinin/claude-atlassian",
   "license": "MIT",
-  "keywords": ["claude-code", "jira", "confluence", "atlassian", "bug-investigation", "root-cause-analysis"]
+  "keywords": ["claude-code", "jira", "confluence", "atlassian", "bug-investigation", "root-cause-analysis", "feature-analysis", "requirements"]
 }

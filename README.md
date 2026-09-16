@@ -1,8 +1,9 @@
 # claude-atlassian
 
 Claude Code plugin: Jira ticket analysis, Confluence page reading, and
-cross-repository bug investigation via context-protecting subagents — the main
-context receives only a compact summary, never raw MCP output.
+cross-repository investigation — of a bug's root cause, or of where a new piece of
+work lands — via context-protecting subagents: the main context receives only a
+compact summary, never raw MCP output.
 
 ## Features
 
@@ -16,6 +17,12 @@ context receives only a compact summary, never raw MCP output.
   reports a root cause with a fix plan. Bugs only, and strictly read-only — it never
   edits code; the only things it puts on disk are the ticket's attachments and, once
   you confirm, its report.
+- **`/claude-atlassian:investigate-feature [PROJ-123]`** — the non-bug counterpart, also
+  after `analyze-jira-ticket`: grounds the request in code — what is being asked, draft
+  acceptance criteria tagged by source, where the work lands, which precedents it should
+  follow, what the neighbours must change, which decisions are still open — then hands the
+  brief to `superpowers:brainstorming` instead of designing anything itself. Features,
+  tasks and tech debt; read-only on the same terms as `investigate-bug`.
 
 ## Attachments
 
@@ -84,8 +91,8 @@ token itself is never printed.
   with access to your Jira and Confluence. The skills call
   `mcp__mcp-atlassian__jira_*` / `mcp__mcp-atlassian__confluence_*` tools — a different
   server name breaks these prefixes, and without the MCP the two analysis skills are
-  non-functional (`investigate-bug` still works if you supply the bug summary yourself — it
-  skips its Atlassian scout and says so in the report).
+  non-functional (`investigate-bug` and `investigate-feature` still work if you supply the
+  ticket summary yourself — they skip their Atlassian scout and say so in the report).
 - **Required:** Python 3 for the attachment downloader. Standard library only —
   nothing to install.
 - **Recommended:** use read-only Jira/Confluence credentials or scopes for the MCP — the
@@ -94,8 +101,9 @@ token itself is never printed.
   discipline by instruction, not by tooling — its scouts are ordinary subagents, so the
   usual permission prompts remain the last line of defence.
 - **Recommended:** [superpowers](https://github.com/obra/superpowers) — `investigate-bug`
-  hands off to `superpowers:brainstorming` when the fix has open design questions.
-  Without it the skill still produces the full report and simply names the next step.
+  hands off to `superpowers:brainstorming` when the fix has open design questions, and
+  `investigate-feature` hands off to it as its default outcome. Without it both skills
+  still produce their full report and simply name the next step.
 
 ## See also
 

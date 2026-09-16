@@ -4,6 +4,21 @@ All notable changes to claude-atlassian will be documented here.
 
 ## [Unreleased]
 
+### Added
+- `investigate-feature` skill — the non-bug counterpart to `investigate-bug`: takes a
+  summarized feature, task or tech-debt ticket and grounds it in code. Parallel scouts
+  cover where the change attaches and what of it already exists, the precedents and
+  conventions it should follow, neighbouring repositories, git history and related
+  tickets; then come acceptance criteria drafted with their sources, the open decisions
+  with the evidence that makes them decisions, and a challenger round attacking the
+  insertion point, the constraints and the criteria. Hands the brief to
+  `superpowers:brainstorming` rather than designing anything itself, and is read-only on
+  the same terms as `investigate-bug`.
+
+### Changed
+- `investigate-bug` now sends a non-bug ticket to `investigate-feature` instead of
+  straight to `superpowers:brainstorming`.
+
 ## [0.4.0] - 2026-08-26
 
 ### Changed
