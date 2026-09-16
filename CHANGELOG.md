@@ -4,6 +4,37 @@ All notable changes to claude-atlassian will be documented here.
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-09-16
+
+### Added
+- `investigate-feature` skill — the non-bug counterpart to `investigate-bug`: takes a
+  summarized feature, task, improvement or tech-debt ticket and grounds it in code.
+  Parallel scouts cover where the change attaches and what of it already exists, the
+  precedents and conventions it should follow, neighbouring repositories, git history and
+  related tickets; then come acceptance criteria drafted with their sources, the open
+  decisions with the evidence that makes them decisions, and one to three challengers,
+  each attacking the insertion point, the constraints or the criteria. By default it hands
+  the brief to `superpowers:brainstorming` rather than designing anything itself; a fatal
+  blocker, a needed split, too-thin requirements or a single obvious path ends the run
+  before that. Read-only on the same terms as `investigate-bug`.
+
+### Changed
+- `investigate-bug` now offers `investigate-feature` for a non-bug ticket where it used to
+  offer `superpowers:brainstorming`.
+- `investigate-bug` tightens its read-only contract: git is used only to read — never to
+  change the repository or its working tree, `bisect` and `fetch` included — and the
+  report's directory is created only after you confirm the save. Its scouts receive the
+  ticket evidence between `<evidence>` tags, apart from their instructions.
+- `investigate-bug` names tests by path once the ticket's attachments are on disk,
+  instead of a tree-wide runner (`pytest`, `npm test`, `go test ./...`) that would
+  pick up an attachment as a test.
+- `investigate-bug` offers to save the report before it takes the outcome's action,
+  so brainstorming or a fix does not take over the session first.
+- `investigate-bug` asks before overwriting `docs/investigations/{KEY}.md` if that
+  file already exists.
+- `analyze-jira-ticket` ends its summary with a one-line pointer to the next step:
+  `investigate-bug` for a bug, `investigate-feature` for anything else.
+
 ## [0.4.0] - 2026-08-26
 
 ### Changed

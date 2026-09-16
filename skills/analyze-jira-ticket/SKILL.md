@@ -29,7 +29,7 @@ prompt: <see prompt template below>
 
 ### Step 2: Return Summary
 
-The subagent returns a structured summary. Present it to the user as-is. Do not re-fetch or re-read anything from Jira.
+The subagent returns a structured summary. Present it to the user as-is. Do not re-fetch or re-read anything from Jira. Then add one line naming the next step for work in code: `/claude-atlassian:investigate-bug` if the ticket is a bug, `/claude-atlassian:investigate-feature` if it is not.
 
 ## Subagent Prompt Template
 
