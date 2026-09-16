@@ -23,6 +23,8 @@ All notable changes to claude-atlassian will be documented here.
   change the repository or its working tree, `bisect` and `fetch` included — and the
   report's directory is created only after you confirm the save. Its scouts receive the
   ticket evidence between `<evidence>` tags, apart from their instructions.
+- `analyze-jira-ticket` ends its summary with a one-line pointer to the next step:
+  `investigate-bug` for a bug, `investigate-feature` for anything else.
 
 ## [0.4.0] - 2026-08-26
 
