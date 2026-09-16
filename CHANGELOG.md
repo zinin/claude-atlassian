@@ -13,7 +13,7 @@ All notable changes to claude-atlassian will be documented here.
   decisions with the evidence that makes them decisions, and one to three challengers,
   each attacking the insertion point, the constraints or the criteria. By default it hands
   the brief to `superpowers:brainstorming` rather than designing anything itself; a fatal
-  blocker, a needed split, too-thin requirements or a single obvious path end the run
+  blocker, a needed split, too-thin requirements or a single obvious path ends the run
   before that. Read-only on the same terms as `investigate-bug`.
 
 ### Changed
