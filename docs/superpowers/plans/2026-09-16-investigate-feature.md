@@ -447,17 +447,21 @@ not yours. You receive coordinates and short quotes.
 - Dispatch all scouts in a SINGLE message so they run in parallel.
 - Use `subagent_type: "general-purpose"`, as the other skills in this plugin do. That type
   can write, so read-only rests on the READ-ONLY block in every template, not on tooling —
-  never dispatch a scout without it.
+  never dispatch a scout or challenger without it.
 - At most 6 scouts, and at most 5 candidate neighbours. With more candidates, keep the ones
   named in the ticket and the ones in the dependency manifests, and say which were dropped.
 - Fill the templates' placeholders from the ticket evidence and your own reading. If a
   value is not known yet — `{BOUNDARY}` especially — pass `unknown — find it yourself`
-  rather than serializing the scouts to discover it first.
+  rather than serializing the scouts to discover it first. `{SYMBOLS}` is never passed
+  that way — terms come out of the ticket summary, and a scout cannot search for a symbol
+  it was not given.
 - Set `{MODE}` for the Entry point and Precedent scouts from the summary: `survey` when not
   one checkable criterion can be named from it, or when which behaviour changes is unclear;
   `targeted` otherwise. A `survey` scout maps what exists instead of guessing what is
   wanted — that map is what turns "please clarify the requirements" into "the code has two
-  import modes, which one is this for?".
+  import modes, which one is this for?". In `survey` mode fill `{CAPABILITY_KIND}` with
+  the area the ticket touches rather than a capability — the template's own survey branch
+  does the rest.
 - Skip the Atlassian scout when `mcp__mcp-atlassian__*` tools are unavailable, and say
   so in the report instead of implying the search happened. For a feature this scout weighs
   more than it does for a bug: requirements and past decisions live in Confluence, not in
@@ -477,12 +481,14 @@ not yours. You receive coordinates and short quotes.
   instead of writing to disk. Sample large files with `grep` rather than reading them
   whole; scouts may read the downloaded files like any other file in the tree.
 
-Give each scout the evidence and its territory. Do not script how to search — scouts
-find their own way in.
+Give each scout the evidence its template asks for, and its territory. Do not script how
+to search — scouts find their own way in.
 
 ## Synthesis
 
-Assemble six things. Every one of them rests on a scout's quote, not on common sense:
+Assemble six things, and carry through three more the scouts hand you whole: what the
+neighbours must change, the constraints they report, and the questions the ticket leaves
+open. Every one of them rests on a scout's quote, not on common sense:
 
 1. **What is being asked** — in your own words, one line. This is where a misreading of the
    ticket surfaces first.
@@ -519,15 +525,18 @@ reachable" are checked the way a bug's causal hypothesis is: by trying to break 
 
 Always send at least one challenger. Send two or three when neighbours are involved, when
 there is more than one open decision, or when confidence is not high. Dispatch them in one
-message, each with one lens and no other: **insertion point**, **constraints**, **acceptance
-criteria**. The template is in the same references file.
+message, each with one lens and no other: **insertion point**, **constraints**,
+**acceptance criteria**. The single challenger takes the insertion point lens; the other
+two join it as the count grows. The template is in the same references file.
 
 - A claim counts as checked only if a lens actually went over it. An unchecked claim is
   reported as unchecked, not as fine.
 - A refutation counts only if it cites coordinates contradicting a specific claim. A
   refutation without them is an open question, not a kill.
 - A blocker does not cancel the work: it goes into the report as a constraint brainstorming
-  has to design within. Only a fatal one changes the outcome.
+  has to design within. Only a fatal one changes the outcome. A blocker is fatal when it
+  leaves no insertion point standing: the work cannot start until something outside this
+  ticket changes.
 MD
 ```
 
@@ -640,9 +649,10 @@ two of them hold picks a different outcome every time.
 
 | Outcome | Condition | Action |
 |---------|-----------|--------|
+| Blocked | A blocker is fatal | Say what must clear before the work can start, and who owns it. Do not start brainstorming |
 | Decomposition needed | The work sits on three or more subsystems, or splits into independent pieces | Propose the split and take the first sub-task in its own run. Scale comes first: the author's questions get asked per piece anyway |
-| Requirements too thin | Not one key criterion can be derived from anything, or a blocker is fatal | Hand over the questions for the author and say what you are waiting for. Do not start brainstorming |
-| No open decisions | One insertion point, a full precedent, criteria that can be confirmed, no neighbours involved | Sketch the plan and offer the normal development workflow. Confirmation is still required. Any doubt at all — take the heavier path |
+| Requirements too thin | Not one key criterion can be derived from anything | Hand over the questions for the author and say what you are waiting for. Do not start brainstorming |
+| No open decisions | One insertion point, a full precedent, no inferred criteria — every one sourced to the ticket, the discussion or a mockup — and no neighbours involved | Sketch the plan — the steps the single precedent dictates, not a choice of approach, since none is left to make — and offer the normal development workflow. Confirmation is still required. Any doubt at all — take the heavier path |
 | Ready to design | Everything else, low confidence included | Offer `superpowers:brainstorming`; on a yes, invoke it in this session. Say it plainly when confidence is low: the insertion point was not found, and that is design question number one |
 
 When you invoke `superpowers:brainstorming`, hand it five things: the project context is
