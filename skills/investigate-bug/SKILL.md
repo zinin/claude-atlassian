@@ -38,6 +38,10 @@ Investigating is not fixing. For the whole run:
 - Never install dependencies (`npm install`, `mvn install`, `pip install`, ...). They
   change the working tree.
 - Never run tests or builds without asking first. Propose the command, wait for a yes.
+  Once the ticket's attachments are on disk, name the tests by path instead of proposing a
+  runner that discovers them across the tree — bare `pytest`, `npm test`, `go test ./...`:
+  an attachment named `conftest.py`, `*.test.js` or `*_test.go` would run as a test. Say
+  so when you ask.
 - Never write anything back to Jira or Confluence.
 - Never read Jira yourself — the summary is your input, and searching belongs to the
   Atlassian scout. The one thing you fetch from Jira is the ticket's attachments, in
