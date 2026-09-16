@@ -17,12 +17,13 @@ compact summary, never raw MCP output.
   reports a root cause with a fix plan. Bugs only, and strictly read-only — it never
   edits code; the only things it puts on disk are the ticket's attachments and, once
   you confirm, its report.
-- **`/claude-atlassian:investigate-feature [PROJ-123]`** — the non-bug counterpart, also
-  after `analyze-jira-ticket`: grounds the request in code — what is being asked, draft
-  acceptance criteria tagged by source, where the work lands, which precedents it should
-  follow, what the neighbours must change, which decisions are still open — then hands the
-  brief to `superpowers:brainstorming` instead of designing anything itself. Features,
-  tasks and tech debt; read-only on the same terms as `investigate-bug`.
+- **`/claude-atlassian:investigate-feature [PROJ-123]`** — the non-bug counterpart, which
+  also runs after `analyze-jira-ticket`: grounds the request in code (what is being asked,
+  draft acceptance criteria tagged by source, where the work lands, which precedents it
+  should follow, what the neighbours must change, which decisions are still open), then,
+  by default, hands the brief to `superpowers:brainstorming` instead of designing anything
+  itself. Features, tasks, improvements and tech debt; read-only on the same terms as
+  `investigate-bug`.
 
 ## Attachments
 
@@ -97,9 +98,10 @@ token itself is never printed.
   nothing to install.
 - **Recommended:** use read-only Jira/Confluence credentials or scopes for the MCP — the
   plugin only reads, and read-only tokens limit the blast radius if malicious ticket/page
-  content ever manages to steer the reading subagent. `investigate-bug` keeps the same
-  discipline by instruction, not by tooling — its scouts are ordinary subagents, so the
-  usual permission prompts remain the last line of defence.
+  content ever manages to steer the reading subagent. `investigate-bug` and
+  `investigate-feature` keep the same discipline by instruction, not by tooling — their
+  scouts are ordinary subagents, so the usual permission prompts remain the last line of
+  defence.
 - **Recommended:** [superpowers](https://github.com/obra/superpowers) — `investigate-bug`
   hands off to `superpowers:brainstorming` when the fix has open design questions, and
   `investigate-feature` hands off to it as its default outcome. Without it both skills

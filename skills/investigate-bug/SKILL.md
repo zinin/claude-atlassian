@@ -18,7 +18,7 @@ it with the user, do not route around it.
 | Gate | Fail action |
 |------|-------------|
 | A bug summary is in the conversation — from `analyze-jira-ticket`, or provided by the user | STOP. A ticket key alone is not a summary: ask to run `/claude-atlassian:analyze-jira-ticket {KEY}` first. Do not read Jira yourself to fill the gap — the ticket's attachments in Recon are the one thing you fetch, and only once the gates pass |
-| The ticket is a bug — something observably misbehaves | STOP. Say this skill is bugs-only and offer `/claude-atlassian:investigate-feature`, which prepares everything that is not a bug |
+| The ticket is a bug — something observably misbehaves | STOP. Say this skill is bugs-only and offer `/claude-atlassian:investigate-feature`, which covers features, tasks, improvements and tech debt |
 | `git rev-parse --show-toplevel` succeeds in the working directory | Ask the user where the code lives |
 
 Invocation: `/claude-atlassian:investigate-bug [PROJ-123]`. The argument is optional — it
