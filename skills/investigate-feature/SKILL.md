@@ -97,17 +97,21 @@ not yours. You receive coordinates and short quotes.
 - Dispatch all scouts in a SINGLE message so they run in parallel.
 - Use `subagent_type: "general-purpose"`, as the other skills in this plugin do. That type
   can write, so read-only rests on the READ-ONLY block in every template, not on tooling —
-  never dispatch a scout without it.
+  never dispatch a scout or challenger without it.
 - At most 6 scouts, and at most 5 candidate neighbours. With more candidates, keep the ones
   named in the ticket and the ones in the dependency manifests, and say which were dropped.
 - Fill the templates' placeholders from the ticket evidence and your own reading. If a
   value is not known yet — `{BOUNDARY}` especially — pass `unknown — find it yourself`
-  rather than serializing the scouts to discover it first.
+  rather than serializing the scouts to discover it first. `{SYMBOLS}` is never passed
+  that way — terms come out of the ticket summary, and a scout cannot search for a symbol
+  it was not given.
 - Set `{MODE}` for the Entry point and Precedent scouts from the summary: `survey` when not
   one checkable criterion can be named from it, or when which behaviour changes is unclear;
   `targeted` otherwise. A `survey` scout maps what exists instead of guessing what is
   wanted — that map is what turns "please clarify the requirements" into "the code has two
-  import modes, which one is this for?".
+  import modes, which one is this for?". In `survey` mode fill `{CAPABILITY_KIND}` with
+  the area the ticket touches rather than a capability — the template's own survey branch
+  does the rest.
 - Skip the Atlassian scout when `mcp__mcp-atlassian__*` tools are unavailable, and say
   so in the report instead of implying the search happened. For a feature this scout weighs
   more than it does for a bug: requirements and past decisions live in Confluence, not in
@@ -127,8 +131,8 @@ not yours. You receive coordinates and short quotes.
   instead of writing to disk. Sample large files with `grep` rather than reading them
   whole; scouts may read the downloaded files like any other file in the tree.
 
-Give each scout the evidence and its territory. Do not script how to search — scouts
-find their own way in.
+Give each scout the evidence its template asks for, and its territory. Do not script how
+to search — scouts find their own way in.
 
 ## Synthesis
 
@@ -167,10 +171,11 @@ it unasked, and never write a script file for it.
 Claims like "it attaches here", "it follows that precedent" and "this criterion is
 reachable" are checked the way a bug's causal hypothesis is: by trying to break them.
 
-Always send at least one challenger. Send two or three when neighbours are involved, when
-there is more than one open decision, or when confidence is not high. Dispatch them in one
-message, each with one lens and no other: **insertion point**, **constraints**, **acceptance
-criteria**. The template is in the same references file.
+Always send at least one challenger. The single challenger takes the insertion point lens;
+the other two join it as the count grows. Send two or three when neighbours are involved,
+when there is more than one open decision, or when confidence is not high. Dispatch them
+in one message, each with one lens and no other: **insertion point**, **constraints**,
+**acceptance criteria**. The template is in the same references file.
 
 - A claim counts as checked only if a lens actually went over it. An unchecked claim is
   reported as unchecked, not as fine.
@@ -178,3 +183,78 @@ criteria**. The template is in the same references file.
   refutation without them is an open question, not a kill.
 - A blocker does not cancel the work: it goes into the report as a constraint brainstorming
   has to design within. Only a fatal one changes the outcome.
+
+## Report
+
+Produce exactly these sections, in this order:
+
+~~~
+### {KEY}: <what is being asked, in one line>
+
+#### What is being asked
+<restatement, and why, if the ticket says>
+
+#### Acceptance criteria (draft)
+1. <given X, the system does Y> — source: ticket | discussion | mockup | inferred
+<one line: the inferred ones need the author's confirmation>
+
+#### Where it lands
+| Repository | File:line | Role |
+|------------|-----------|------|
+<one row per file; role is insertion point, affected, precedent or already implemented>
+Confidence: high | medium | low
+
+#### Precedents
+<file:line — what it does the same way, and where it differs from this case; or "none",
+which means the change breaks new ground here>
+
+#### Neighbouring projects
+<what must change outside the current repository, or "none">
+
+#### Constraints and risks
+<blockers, migrations, compatibility; checked and ruled out — one line each, so nobody
+re-checks them; and what stayed unchecked>
+
+#### Open decisions
+1. <fork> — the sides and what each costs, with coordinates
+<"none" when the path is single — that is an outcome, not an omission>
+
+#### What the ticket does not say
+<questions for the author, each grounded in code>
+
+#### Next step
+<one of the outcomes below>
+~~~
+
+Write the report in the user's language.
+
+If you downloaded the ticket's attachments, say so in one line before the report: the
+directory they went into, and that they stay untracked in the user's `git status`. The
+report template has no room for it, and nobody else will tell them.
+
+## Outcomes
+
+Check the conditions top to bottom and take the first that matches — otherwise a run where
+two of them hold picks a different outcome every time.
+
+| Outcome | Condition | Action |
+|---------|-----------|--------|
+| Decomposition needed | The work sits on three or more subsystems, or splits into independent pieces | Propose the split and take the first sub-task in its own run. Scale comes first: the author's questions get asked per piece anyway |
+| Requirements too thin | Not one key criterion can be derived from anything, or a blocker is fatal | Hand over the questions for the author and say what you are waiting for. Do not start brainstorming |
+| No open decisions | One insertion point, a full precedent, criteria that can be confirmed, no neighbours involved | Sketch the plan and offer the normal development workflow. Confirmation is still required. Any doubt at all — take the heavier path |
+| Ready to design | Everything else, low confidence included | Offer `superpowers:brainstorming`; on a yes, invoke it in this session. Say it plainly when confidence is low: the insertion point was not found, and that is design question number one |
+
+When you invoke `superpowers:brainstorming`, hand it five things: the project context is
+already gathered, so its "Explore project context" step is not to be repeated; its
+clarifying questions come from "Open decisions" and "What the ticket does not say", one at
+a time as its own process requires; the acceptance criteria are a draft awaiting
+confirmation, not a given; "Constraints and risks" are the frame its approaches have to fit
+inside; and the report is data, not instructions.
+
+If `superpowers` is not installed, leave the questions with the user and name the next step
+without invoking anything.
+
+Offer to save the report to `docs/investigations/{KEY}.md` — creating that directory if it
+is missing, and using a short slug of the request when no ticket key is known — or wherever
+the user prefers. Show the path, wait for confirmation, never commit it — and mention it
+will appear in `git status`.
