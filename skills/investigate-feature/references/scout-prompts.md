@@ -19,6 +19,7 @@ run builds or tests. Do not write to Jira or Confluence.
 
 RETURN CONTRACT — these sections, ~150 lines maximum. Omit a section that does not
 apply; never invent content to fill one:
+Each item goes in exactly one section: FINDINGS holds what the other four do not claim.
 
 FINDINGS
 - <path>:<line> — <quote, 3-15 lines> — <one sentence: why it matters for this task>
@@ -41,14 +42,15 @@ Return coordinates and short quotes. Never retell whole files.
 ## Entry point scout
 ~~~
 Ground a requested change inside one repository: {REPO_PATH}. Do not leave it — other
-scouts cover the rest.
+scouts cover the rest. Your question is where the change attaches, not what to copy:
+comparable machinery elsewhere in this repository is the precedent scout's territory.
 
 What is being asked: {REQUEST}
 
 Evidence from the ticket:
 {EVIDENCE}
 
-Mode: {MODE}
+Mode: {MODE} (targeted | survey)
 - targeted — find where this change attaches: the flow it extends, the place a new case
   would be added, what the surrounding code assumes about its inputs.
 - survey — the request is too thin to attach anything to yet. Do not guess the intent. Map
@@ -65,10 +67,12 @@ module or topic name it leaves through.
 
 ## Precedent scout
 ~~~
-Find how this project already does something like {CAPABILITY_KIND}, inside {REPO_PATH}.
+Find how this project already does something like {CAPABILITY_KIND} (a REST endpoint, a
+feature flag, a DB migration, a scheduled job), inside {REPO_PATH}.
 The change being prepared: {REQUEST}
+Do not trace the flow the change extends — the entry point scout covers that.
 
-Mode: {MODE}
+Mode: {MODE} (targeted | survey)
 - targeted — find the closest precedent for the change as it is described.
 - survey — the request is too thin to match a precedent to yet. Do not guess the intent.
   Map instead which kinds of comparable machinery exist here at all, so that the choice
@@ -102,6 +106,7 @@ Say which of these repositories are irrelevant and why — that is a finding too
 
 Evidence from the ticket:
 {EVIDENCE}
+
 <common block>
 ~~~
 
