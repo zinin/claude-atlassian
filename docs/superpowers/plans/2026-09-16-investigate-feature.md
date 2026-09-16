@@ -406,6 +406,7 @@ assert "At most 6 scouts" in t, "scout cap missing"
 assert "at most 5 candidate neighbours" in t, "neighbour cap missing"
 for word in ("targeted", "survey"):
     assert word in t, f"MODE value missing: {word}"
+assert "Entry point and Precedent scouts" in t, "MODE must be set for both scouts, not one"
 for word in ("high", "medium", "low"):
     assert word in t, f"confidence level missing: {word}"
 assert "jira_download_attachments" in t, "the base64 MCP trap must be named explicitly"
