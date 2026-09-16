@@ -1,6 +1,6 @@
 ---
 name: investigate-feature
-description: Use when a Jira ticket that is not a bug - a feature, task, improvement or tech-debt item - has already been summarized and the work must be grounded in code before design starts - what exactly is being asked, where it lands in this repository and its neighbours, what precedents already exist, and which decisions are still open. Not for bugs. By default hands off to superpowers:brainstorming. Takes an optional ticket key as argument.
+description: Use when a Jira ticket that is not a bug - a feature, task, improvement or tech-debt item - has already been summarized and the work must be grounded in code before design starts - what exactly is being asked, where it lands in this repository and its neighbours, what precedents already exist, and which decisions are still open. Not for bugs. For such a ticket, use it before superpowers:brainstorming. Takes an optional ticket key as argument.
 ---
 
 # Investigate Feature
