@@ -185,15 +185,17 @@ it unasked, and never write a script file for it.
 Claims like "it attaches here", "it follows that precedent" and "this criterion is
 reachable" are checked the way a bug's causal hypothesis is: by trying to break them.
 
-Always send at least one challenger. Send two or three when neighbours are involved, when
-there is more than one open decision, or when confidence is not high. Send all three when
-synthesis leaves no open decisions, no questions for the author and no neighbours: the run
-is heading for the No open decisions outcome, the one that skips brainstorming, so nothing
-it rests on may go unchecked. Dispatch them in one message, each with one lens and no
-other: **insertion point**, **constraints**, **acceptance criteria**. The single
-challenger takes the insertion point lens; the other two join it as the count grows.
-Whatever the count, the insertion point claim also names the precedent, or says there is
-none, so the lens tests that as well. The template is in the same references file.
+Always send at least one challenger. Send two when one of these holds — neighbours are
+involved, there is more than one open decision, confidence is not high — and three when
+more than one of them holds. Send all three as well when synthesis leaves no open
+decisions, no questions for the author and no neighbours: the run is heading for the No
+open decisions outcome, the one that skips brainstorming, so nothing it rests on may go
+unchecked. Dispatch them in one message, each with one lens and no other, in this order:
+the first takes **insertion point**, the second **constraints**, the third
+**acceptance criteria** — constraints come before criteria because brainstorming treats
+constraints as its frame, while it confirms criteria with the user anyway. Whatever the
+count, the insertion point claim also names the precedent, or says there is none, so the
+lens tests that as well. The template is in the same references file.
 
 - A claim counts as checked only if a lens actually went over it. An unchecked claim is
   reported as unchecked, not as fine.
