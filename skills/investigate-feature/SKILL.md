@@ -65,8 +65,8 @@ the expensive kind of fast.
 | "I'll just scaffold the files so the shape is clear" | Creating a file is editing. Brainstorming has not asked its first question yet, and the shape is already decided for it |
 | "The feature is trivial, there is nothing to discuss — I'll build it" | "Too simple to need approval" is exactly where an unexamined assumption costs the most. Report, then let the user pick the path |
 | "The ticket has no acceptance criteria, I'll write sensible ones" | A drafted criterion reads as an agreed one. Mark what you inferred as inferred, and send what you cannot infer to the author as a question |
-| "The requirements are empty, I'll ask the author in a ticket comment" | A comment from an agent reads as a commitment from the team, and the author answers into a thread nobody in this session is watching. |
-| "I need to install the dependencies to see whether it builds" | Installing writes into the tree — that is doing the work, not preparing it. Reason from the code, and say in the report what could not be checked without a build. |
+| "The requirements are empty, I'll ask the author in a ticket comment" | A comment from an agent reads as a commitment from the team, and the author answers into a thread nobody in this session is watching |
+| "I need to install the dependencies to see whether it builds" | Installing writes into the tree — that is doing the work, not preparing it. Reason from the code, and say in the report what could not be checked without a build |
 
 ## Red Flags — STOP
 
