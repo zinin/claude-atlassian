@@ -1,6 +1,6 @@
 ---
 name: investigate-feature
-description: Use when a Jira ticket that is not a bug - a feature, task, improvement or tech-debt item - has already been summarized and the work must be grounded in code before design starts: what exactly is being asked, where it lands in this repository and its neighbours, what precedents already exist, and which decisions are still open. Not for bugs. Hands off to superpowers:brainstorming. Takes an optional ticket key as argument.
+description: Use when a Jira ticket that is not a bug - a feature, task, improvement or tech-debt item - has already been summarized and the work must be grounded in code before design starts - what exactly is being asked, where it lands in this repository and its neighbours, what precedents already exist, and which decisions are still open. Not for bugs. Hands off to superpowers:brainstorming. Takes an optional ticket key as argument.
 ---
 
 # Investigate Feature
@@ -21,7 +21,7 @@ it with the user, do not route around it.
 | Gate | Fail action |
 |------|-------------|
 | A ticket summary is in the conversation — from `analyze-jira-ticket`, or provided by the user | STOP. A ticket key alone is not a summary: ask to run `/claude-atlassian:analyze-jira-ticket {KEY}` first. Do not read Jira yourself to fill the gap — the ticket's attachments in Recon are the one thing you fetch, and only once the gates pass |
-| The ticket describes behaviour that does not exist yet, not behaviour that is broken | STOP. Say that a bug is `investigate-bug`'s job and offer `/claude-atlassian:investigate-bug` |
+| The ticket is not a bug report — it asks for behaviour that does not exist yet, or for a change to behaviour that works as intended; it does not report behaviour that is broken | STOP. Say that a bug is `investigate-bug`'s job and offer `/claude-atlassian:investigate-bug` |
 | `git rev-parse --show-toplevel` succeeds in the working directory | Ask the user where the code lives |
 
 A ticket the size of an epic is deliberately not a gate but an outcome: the scale usually
@@ -64,7 +64,7 @@ the expensive kind of fast.
 | "The feature is trivial, there is nothing to discuss — I'll build it" | "Too simple to need approval" is exactly where an unexamined assumption costs the most. Report, then let the user pick the path |
 | "The ticket has no acceptance criteria, I'll write sensible ones" | A drafted criterion reads as an agreed one. Mark what you inferred as inferred, and send what you cannot infer to the author as a question |
 | "The requirements are empty, I'll ask the author in a ticket comment" | We do not write to Jira. The questions go to the user |
-| "I need to install the dependencies to see whether it builds" | Installing writes into the tree. Ask first, or reason from the code |
+| "I need to install the dependencies to see whether it builds" | Installing writes into the tree — that is doing the work, not preparing it. Reason from the code, and say in the report what could not be checked without a build. |
 
 ## Red Flags — STOP
 
