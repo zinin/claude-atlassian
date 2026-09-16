@@ -171,18 +171,20 @@ it unasked, and never write a script file for it.
 Claims like "it attaches here", "it follows that precedent" and "this criterion is
 reachable" are checked the way a bug's causal hypothesis is: by trying to break them.
 
-Always send at least one challenger. The single challenger takes the insertion point lens;
-the other two join it as the count grows. Send two or three when neighbours are involved,
-when there is more than one open decision, or when confidence is not high. Dispatch them
-in one message, each with one lens and no other: **insertion point**, **constraints**,
-**acceptance criteria**. The template is in the same references file.
+Always send at least one challenger. Send two or three when neighbours are involved, when
+there is more than one open decision, or when confidence is not high. Dispatch them in one
+message, each with one lens and no other: **insertion point**, **constraints**,
+**acceptance criteria**. The single challenger takes the insertion point lens; the other
+two join it as the count grows. The template is in the same references file.
 
 - A claim counts as checked only if a lens actually went over it. An unchecked claim is
   reported as unchecked, not as fine.
 - A refutation counts only if it cites coordinates contradicting a specific claim. A
   refutation without them is an open question, not a kill.
 - A blocker does not cancel the work: it goes into the report as a constraint brainstorming
-  has to design within. Only a fatal one changes the outcome.
+  has to design within. Only a fatal one changes the outcome. A blocker is fatal when it
+  leaves no insertion point standing: the work cannot start until something outside this
+  ticket changes.
 
 ## Report
 
@@ -239,9 +241,10 @@ two of them hold picks a different outcome every time.
 
 | Outcome | Condition | Action |
 |---------|-----------|--------|
+| Blocked | A blocker is fatal | Say what must clear before the work can start, and who owns it. Do not start brainstorming |
 | Decomposition needed | The work sits on three or more subsystems, or splits into independent pieces | Propose the split and take the first sub-task in its own run. Scale comes first: the author's questions get asked per piece anyway |
-| Requirements too thin | Not one key criterion can be derived from anything, or a blocker is fatal | Hand over the questions for the author and say what you are waiting for. Do not start brainstorming |
-| No open decisions | One insertion point, a full precedent, criteria that can be confirmed, no neighbours involved | Sketch the plan and offer the normal development workflow. Confirmation is still required. Any doubt at all — take the heavier path |
+| Requirements too thin | Not one key criterion can be derived from anything | Hand over the questions for the author and say what you are waiting for. Do not start brainstorming |
+| No open decisions | One insertion point, a full precedent, criteria that can be confirmed, no neighbours involved | Sketch the plan — the steps the single precedent dictates, not a choice of approach, since none is left to make — and offer the normal development workflow. Confirmation is still required. Any doubt at all — take the heavier path |
 | Ready to design | Everything else, low confidence included | Offer `superpowers:brainstorming`; on a yes, invoke it in this session. Say it plainly when confidence is low: the insertion point was not found, and that is design question number one |
 
 When you invoke `superpowers:brainstorming`, hand it five things: the project context is
